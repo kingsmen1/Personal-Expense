@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,25 +15,18 @@ class MyApp extends StatelessWidget {
           title: Text('Udemy Course'),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Card(//card alway take width of the child or the parent
+            Card(
+              //card alway take width of the child or the parent
               color: Colors.deepOrange,
-              child: Container(
-                  width: double.infinity,
-                  child: Text('card1')),
+              child: Container(width: double.infinity, child: Text('card1')),
             ),
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Text('card2'),
-              ),
-            ),Container(
-              width: double.infinity,
-              child: Card(
-                child: Text('card2'),
-              ),
+            Card(
+              color: Colors.blueGrey,
+              child: Text('card2'),
             ),
-            //nothing
           ],
         ),
       ),
