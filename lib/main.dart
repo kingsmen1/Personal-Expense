@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import './transaction.dart';
 
 void main() {
@@ -52,9 +53,15 @@ class MyApp extends StatelessWidget {
                 return Card(
                   color: Colors.deepOrange,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(child: Text(tx.amount.toString())),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black, width: 2, )
+                        ),
+                padding: EdgeInsets.all(20),
+                          margin: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          child: Text(tx.amount.toString())),
                       Container(
                         child: Column(
                           children: [
