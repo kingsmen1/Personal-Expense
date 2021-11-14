@@ -16,23 +16,25 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Udemy Course'),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text(
-                  'Chart',
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                width: double.infinity,
+                child: Card(
+                  color: Colors.blue,
+                  child: Text(
+                    'Chart',
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-            ),
-            UserTransactionsState(),
-          ],
+              UserTransactionsState(),
+            ],
+          ),
         ),
       ),
     );

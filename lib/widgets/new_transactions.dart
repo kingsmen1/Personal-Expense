@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 class NewTransactions extends StatelessWidget {
 
+  final Function newTx ;
+
   /*method 1 of TextField;*/
   final titleInput = TextEditingController();
   final amountInput = TextEditingController();
+
+  NewTransactions(this.newTx);
 
 /*method 2 of TextField
   String titleInput;
@@ -47,7 +51,7 @@ class NewTransactions extends StatelessWidget {
             ),
             FlatButton(
                 onPressed: () {
-                  print(titleInput.text);print(amountInput.text);
+                  newTx(titleInput.text , double.parse(amountInput.text));
                 },
                 child: Text(
                   'Add Transaction',
