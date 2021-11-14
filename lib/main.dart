@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() {
@@ -48,6 +48,29 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Tile'),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Amount'),
+                    ),
+                    FlatButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Add Transaction',
+                          style: TextStyle(color: Colors.purple),
+                        ))
+                  ],
+                ),
+              ),
+            ),
             Column(
               children: transactions.map((tx) {
                 return Card(
@@ -83,7 +106,7 @@ class MyApp extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              tx.date.toString(),
+                              DateFormat.yMMMEd().format(tx.date),
                               style: TextStyle(color: Colors.grey),
                             ),
                           ],
