@@ -51,22 +51,41 @@ class MyApp extends StatelessWidget {
             Column(
               children: transactions.map((tx) {
                 return Card(
-                  color: Colors.deepOrange,
+                  //color: Colors.deepOrange,
                   child: Row(
                     children: [
                       Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 2, )
-                        ),
-                padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                            color: Colors.black,
+                            width: 2,
+                          )),
+                          padding: EdgeInsets.all(20),
                           margin: EdgeInsets.symmetric(
                               vertical: 10, horizontal: 15),
-                          child: Text(tx.amount.toString())),
+                          child: Text(
+                            '\$${tx.amount}',
+                            style: TextStyle(
+                              color: Colors.purple,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          )),
                       Container(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(tx.title),
-                            Text(tx.date.toString()),
+                            Text(
+                              tx.title,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              tx.date.toString(),
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ],
                         ),
                       )
