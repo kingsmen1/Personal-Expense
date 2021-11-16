@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewTransactions extends StatelessWidget {
-
-  final Function newTx ;
+  final Function newTx;
 
   /*method 1 of TextField;*/
   final titleInput = TextEditingController();
@@ -14,6 +14,19 @@ class NewTransactions extends StatelessWidget {
   String titleInput;
   String amountInput;*/
 
+  void addingData() {
+
+    final enteredTitle = titleInput.text;
+    final enteredAmount = double.parse(amountInput.text);
+
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0 ){
+
+      return ;
+    }
+
+    newTx(enteredTitle, enteredAmount);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +44,8 @@ class NewTransactions extends StatelessWidget {
                         to the userinput */
 
               controller: titleInput,
+              onSubmitted: (_) => addingData(),
+              keyboardType: TextInputType.text,
 
               /*this is method 2 to assign the userInput to variables
                       onChanged: (val) => titleInput = val,
@@ -38,11 +53,13 @@ class NewTransactions extends StatelessWidget {
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
+              keyboardType: TextInputType.number,
               /*this is the method1 the fluter automatically
                         connects the controller: to the textFields and lisetens
                         to the userinput */
 
               controller: amountInput,
+              onSubmitted: (_) => addingData(),
 
               /*this is method 2 to assign the userInput to variables
                       onChanged: (val){
@@ -50,9 +67,8 @@ class NewTransactions extends StatelessWidget {
                       },*/
             ),
             FlatButton(
-                onPressed: () {
-                  newTx(titleInput.text , double.parse(amountInput.text));
-                },
+                onPressed:addingData,
+
                 child: Text(
                   'Add Transaction',
                   style: TextStyle(color: Colors.purple),
