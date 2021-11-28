@@ -5,7 +5,7 @@ import 'package:udemy/models/transaction.dart';
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransactions;
 
-  const Chart({Key key, this.recentTransactions}) : super(key: key);
+  Chart(this.recentTransactions);
 
   List<Map<String, Object>> get goupedTransactoinValues {
     return List.generate(7, (index) {
@@ -19,12 +19,14 @@ class Chart extends StatelessWidget {
           totalSum += recentTransactions[i].amount;
         }
       }
-      return {'day': DateFormat.E(weekday), 'amount': totalSum};
+
+      return {'day': DateFormat.E().format(weekday), 'amount': totalSum};
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(goupedTransactoinValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
