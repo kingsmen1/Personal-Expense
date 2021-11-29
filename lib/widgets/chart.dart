@@ -7,11 +7,16 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTransactions);
 
-  List<Map<String, Object>> get goupedTransactoinValues {
+  List<Map<String, Object>> get groupedTransactoinValues {
     return List.generate(7, (index) {
       final weekday = DateTime.now().subtract(Duration(days: index));
       var totalSum = 0.0;
 
+      /*This For loop method run's till the recenTransactions list length and
+      * checking the condition of recentTransation[index].date matches the
+      * above weekday date which is recent 7 days , if it matches then
+      * looping through all the amount objects it adds all the amount to
+      * 'totalsum giving it total amount value*/
       for (var i = 0; i < recentTransactions.length; i++) {
         if (recentTransactions[i].date.day == weekday.day &&
             recentTransactions[i].date.month == weekday.month &&
@@ -20,18 +25,26 @@ class Chart extends StatelessWidget {
         }
       }
 
-      return {'day': DateFormat.E().format(weekday), 'amount': totalSum};
+      /*substring method = it removes letters of a string
+      * Example: var string = 'dartlang';
+                 string.substring(1);    // 'artlang'
+                 string.substring(1, 4); // 'art'*/
+      return {
+        'day': DateFormat.E().format(weekday).substring(0, 1),
+        'amount': totalSum
+      };
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print(goupedTransactoinValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
       child: Row(
-        children: [],
+        children: groupedTransactoinValues.map((e) {
+          return Text('${e['day']} : ${e['amount']}');
+        }).toList(),
       ),
     );
   }

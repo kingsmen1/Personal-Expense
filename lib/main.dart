@@ -88,7 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
  * a newly returned list otherwise it is not included in that list.
  * remeber "where" return a itterable not a list so add .toList() to covert it
  * to list*/
-
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
       return tx.date.isAfter(
