@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:udemy/models/transaction.dart';
+import 'package:udemy/widgets/chart_bar.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransactions;
@@ -16,7 +17,7 @@ class Chart extends StatelessWidget {
       * checking the condition of recentTransation[index].date matches the
       * above weekday date which is recent 7 days , if it matches then
       * looping through all the amount objects it adds all the amount to
-      * 'totalsum giving it total amount value*/
+      * 'totalsum giving it total amount values of that single day*/
       for (var i = 0; i < recentTransactions.length; i++) {
         if (recentTransactions[i].date.day == weekday.day &&
             recentTransactions[i].date.month == weekday.month &&
@@ -31,11 +32,18 @@ class Chart extends StatelessWidget {
                  string.substring(1, 4); // 'art'*/
       return {
         'day': DateFormat.E().format(weekday).substring(0, 1),
-        'amount': totalSum
+        'amount': totalSum//total day spending
       };
     });
   }
 
+  //Total spending the amount spent in the whole week
+  double get totalSpending {
+    return groupedTransactoinValues.fold(0.0, (sum, item){
+      return sum+item['amount'];
+    }
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -43,7 +51,7 @@ class Chart extends StatelessWidget {
       margin: EdgeInsets.all(20),
       child: Row(
         children: groupedTransactoinValues.map((e) {
-          return Text('${e['day']} : ${e['amount']}');
+          return ChartBar(e['day'] , e['amount'], totalSpending == 0.0 ? 0.0 : (e['amount'] as double) / totalSpending );
         }).toList(),
       ),
     );
