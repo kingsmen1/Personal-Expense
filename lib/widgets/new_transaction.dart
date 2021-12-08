@@ -55,11 +55,25 @@ class _NewTransactionState extends State<NewTransaction> {
               onSubmitted: (_) => submitData(),
               // onChanged: (val) => amountInput = val,
             ),
+            Container(
+              height: 60,
+              child: Row(
+                children: [
+                  Text('Date not Chosen!' ,),
+                  FlatButton(
+                    textColor: Theme.of(context).primaryColor,
+                    onPressed: () {},
+                    child: Text('Choose Date'),
+                  ),
+                ],
+              ),
+            ),
             FlatButton(
               child: Text('Add Transaction'),
               textColor: Colors.purple,
               onPressed: submitData,
             ),
+
           ],
         ),
       ),
