@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:udemy/widgets/chart.dart';
+import 'package:udemy/widgets/test.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import './models/transaction.dart';
@@ -41,18 +42,33 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'New Shoes',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Weekly Groceries',
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: 't1',
+      title: 'New Shoes',
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Weekly Groceries',
+      amount: 16.53,
+      date: DateTime.now(),
+    ),Transaction(
+      id: 't2',
+      title: 'Weekly Groceries',
+      amount: 16.53,
+      date: DateTime.now(),
+    ),Transaction(
+      id: 't2',
+      title: 'Weekly Groceries',
+      amount: 16.53,
+      date: DateTime.now(),
+    ),Transaction(
+      id: 't2',
+      title: 'Weekly Groceries',
+      amount: 1666666666.53,
+      date: DateTime.now(),
+    ),
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
@@ -89,13 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
  * remeber "where" return a itterable not a list so add .toList() to covert it
  * to list*/
   List<Transaction> get _recentTransactions {
-    return _userTransactions.where((tx) {
-      return tx.date.isAfter(
-        DateTime.now().subtract(
-          Duration(days: 7),
-          //this above line check's if the transactions are 7 days old from the current Date.
-        ),
-      );
+    return _userTransactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(Duration(days: 7),
+      ));
     }).toList();
   }
 
@@ -116,6 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Test(),
             Chart(_recentTransactions),
             TransactionList(_userTransactions),
           ],
