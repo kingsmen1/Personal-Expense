@@ -11,7 +11,9 @@ class Chart extends StatelessWidget {
 
   List<Map<String, Object>> get groupedTransactoinValues {
     return List.generate(7, (index) {
-      final weekday = DateTime.now().subtract(Duration(days: index));
+      /*so it first subtracts "6 - 0 =  6", then "6 - 1 = 5",
+      ... and ends with subtracting "6 - 6 = 0" which is just "now()"*/
+      final weekday = DateTime.now().subtract(Duration(days: 6 - index));
       var totalSum = 0.0;
 
       /*This For loop method run's till the recenTransactions list length and
@@ -33,7 +35,7 @@ class Chart extends StatelessWidget {
                  string.substring(1, 4); // 'art'*/
       return {
         'day': DateFormat.E().format(weekday).substring(0, 1),
-        'amount': totalSum//total day spending
+        'amount': totalSum //total day spending
       };
     });
   }
