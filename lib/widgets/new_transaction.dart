@@ -59,21 +59,26 @@ class _NewTransactionState extends State<NewTransaction> {
               height: 60,
               child: Row(
                 children: [
-                  Text('Date not Chosen!' ,),
+                  Text(
+                    'Date not Chosen!',
+                  ),
                   FlatButton(
                     textColor: Theme.of(context).primaryColor,
                     onPressed: () {},
-                    child: Text('Choose Date'),
+                    child: Text(
+                      'Choose Date',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               ),
             ),
-            FlatButton(
+            RaisedButton(
+              color: Theme.of(context).primaryColor,
               child: Text('Add Transaction'),
-              textColor: Colors.purple,
+              textColor: Colors.white,
               onPressed: submitData,
             ),
-
           ],
         ),
       ),
