@@ -44,20 +44,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransactions = [
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _userTransactions = [];
 
   void _addNewTransaction(String txTitle, double txAmount , DateTime selectedDatee) {
     final newTx = Transaction(
@@ -84,6 +71,15 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
   }
+
+
+  void _deleteTransaction (String id){
+    setState(() {
+      _userTransactions.removeWhere((e) => e.id == id);
+    });
+
+  }
+
 
   /* This get(Dynamically calculated property) _recentTransactions Method
  * gets only the recent 7 days transactions from the userTransactions
@@ -118,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Test(),
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions , _deleteTransaction),
           ],
         ),
       ),
