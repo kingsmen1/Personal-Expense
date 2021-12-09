@@ -56,29 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
       title: 'Weekly Groceries',
       amount: 16.53,
       date: DateTime.now(),
-    ),Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.53,
-      date: DateTime.now(),
-    ),Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.53,
-      date: DateTime.now(),
-    ),Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 1666666666.53,
-      date: DateTime.now(),
     ),
   ];
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount , DateTime selectedDatee) {
     final newTx = Transaction(
       title: txTitle,
       amount: txAmount,
-      date: DateTime.now(),
+      date: selectedDatee,
       id: DateTime.now().toString(),
     );
 
