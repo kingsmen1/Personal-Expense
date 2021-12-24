@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:udemy/widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import './models/transaction.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp
+  ]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        buttonTheme: ButtonThemeData(
-          buttonColor: Colors.purple
-        ),
+        buttonTheme: ButtonThemeData(buttonColor: Colors.purple),
         primarySwatch: Colors.purple,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
-          headline6: const TextStyle(
-            fontFamily: 'Opensans',
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-        ),
+              headline6: const TextStyle(
+                fontFamily: 'Opensans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
         appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(
                 fontFamily: 'Opensans',
@@ -118,14 +124,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
-  void _deleteTransaction (String id){
+  void _deleteTransaction(String id) {
     setState(() {
       _userTransactions.removeWhere((e) => e.id == id);
     });
-
   }
-
 
   /* This get(Dynamically calculated property) _recentTransactions Method
  * gets only the recent 7 days transactions from the userTransactions
@@ -136,7 +139,8 @@ class _MyHomePageState extends State<MyHomePage> {
  * to list*/
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tr) {
-      return tr.date.isAfter(DateTime.now().subtract(Duration(days: 7),
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
       ));
     }).toList();
   }
@@ -160,10 +164,16 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              height: (MediaQuery.of(context).size.height - appbar.preferredSize.height - MediaQuery.of(context).padding.top) * 0.3,
+                height: (MediaQuery.of(context).size.height -
+                        appbar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.3,
                 child: Chart(_recentTransactions)),
             Container(
-                height: (MediaQuery.of(context).size.height - appbar.preferredSize.height - MediaQuery.of(context).padding.top) * 0.7,
+                height: (MediaQuery.of(context).size.height -
+                        appbar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.7,
                 child: TransactionList(_userTransactions, _deleteTransaction)),
           ],
         ),
