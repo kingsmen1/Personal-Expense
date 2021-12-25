@@ -48,51 +48,51 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: DateTime.now().toString(),
-    //     title: "t1",
-    //     amount: 9.22,
-    //     date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
+    Transaction(
+        id: DateTime.now().toString(),
+        title: "t1",
+        amount: 9.22,
+        date: DateTime.now()),
   ];
 
   bool showChart = false;
