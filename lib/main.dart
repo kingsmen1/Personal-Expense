@@ -119,10 +119,10 @@ class _MyHomePageState extends State<MyHomePage> {
           //return NewTransaction(_addNewTransaction);
           return SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: NewTransaction(_addNewTransaction),
-              ));
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: NewTransaction(_addNewTransaction),
+          ));
         });
   }
 
@@ -149,7 +149,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape =  MediaQuery.of(context).orientation == Orientation.landscape;
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     final appbar = AppBar(
       title: Text('Flutter App'),
       actions: <Widget>[
@@ -160,12 +162,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
     final txList = Container(
-        height: (MediaQuery.of(context).size.height -
-            appbar.preferredSize.height -
-            MediaQuery.of(context).padding.top) *
+        height: (mediaQuery.size.height -
+                appbar.preferredSize.height -
+                mediaQuery.padding.top) *
             0.7,
-        child:
-        TransactionList(_userTransactions, _deleteTransaction));
+        child: TransactionList(_userTransactions, _deleteTransaction , mediaQuery));
     return Scaffold(
       appBar: appbar,
       body: SingleChildScrollView(
@@ -173,34 +174,37 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            if (isLandscape) Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Show Chart'),
-                Switch(
-                    value: showChart,
-                    onChanged: (val) {
-                      setState(() {
-                        showChart = val;
-                      });
-                    })
-              ],
-            ),
-            if(!isLandscape) Container(
-                height: (MediaQuery.of(context).size.height -
-                    appbar.preferredSize.height -
-                    MediaQuery.of(context).padding.top) *
-                    0.3,
-                child: Chart(_recentTransactions)),
-            if(!isLandscape) txList,
-            if (isLandscape )showChart
-                ? Container(
-                    height: (MediaQuery.of(context).size.height -
-                            appbar.preferredSize.height -
-                            MediaQuery.of(context).padding.top) *
-                        0.7,
-                    child: Chart(_recentTransactions))
-                :txList
+            if (isLandscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Show Chart'),
+                  Switch(
+                      value: showChart,
+                      onChanged: (val) {
+                        setState(() {
+                          showChart = val;
+                        });
+                      })
+                ],
+              ),
+            if (!isLandscape)
+              Container(
+                  height: (mediaQuery.size.height -
+                          appbar.preferredSize.height -
+                          mediaQuery.padding.top) *
+                      0.3,
+                  child: Chart(_recentTransactions)),
+            if (!isLandscape) txList,
+            if (isLandscape)
+              showChart
+                  ? Container(
+                      height: (mediaQuery.size.height -
+                              appbar.preferredSize.height -
+                              mediaQuery.padding.top) *
+                          0.7,
+                      child: Chart(_recentTransactions))
+                  : txList
           ],
         ),
       ),

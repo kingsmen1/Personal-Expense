@@ -5,8 +5,9 @@ import '../models/transaction.dart';
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   final Function deleteTx;
+  final mediaQuery;
 
-  TransactionList(this.transactions, this.deleteTx);
+  TransactionList(this.transactions, this.deleteTx , this.mediaQuery);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   subtitle:
                       Text(DateFormat.yMMMd().format(transactions[index].date)),
-                  trailing: MediaQuery.of(context).size.width > 411.5
+                  trailing: mediaQuery.size.width > 411.5
                       ? FlatButton.icon(
                           onPressed: () {
                             deleteTx(transactions[index].id);
