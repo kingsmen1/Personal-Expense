@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:udemy/widgets/chart.dart';
@@ -48,51 +50,51 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
-    Transaction(
-        id: DateTime.now().toString(),
-        title: "t1",
-        amount: 9.22,
-        date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: DateTime.now().toString(),
+    //     title: "t1",
+    //     amount: 9.22,
+    //     date: DateTime.now()),
   ];
 
   bool showChart = false;
@@ -179,7 +181,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Show Chart'),
-                  Switch(
+                  Switch.adaptive(
+                    activeColor:Theme.of(context).accentColor,
                       value: showChart,
                       onChanged: (val) {
                         setState(() {
@@ -209,7 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Platform.isIOS ? Container() :FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
       ),
